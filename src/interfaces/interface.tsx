@@ -6,4 +6,9 @@ export interface InputInterface {
 }
 export interface CopyInterface {
   img: string;
+  click?: () => void;
+}
+export interface AppContextInterface {
+  counter: number;
+  setCounter: React.Dispatch<React.SetStateAction<number>>;
 }
