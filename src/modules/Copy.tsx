@@ -1,4 +1,6 @@
-const Copy = (props: any) => {
+import { CopyInterface } from "../interfaces/interface";
+
+const Copy = (props: CopyInterface) => {
   return (
     <div className="password-generator__copy-password">
       <button className="">

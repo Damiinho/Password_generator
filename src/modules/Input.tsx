@@ -1,4 +1,6 @@
-const Input = (props: any) => {
+import { InputInterface } from "../interfaces/interface";
+
+const Input = (props: InputInterface) => {
   return (
     <div className="password-generator__input">
       <label>
