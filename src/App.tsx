@@ -12,8 +12,9 @@ import { AppContext } from "./contexts/AppContext";
 
 function App() {
   const [counter, setCounter] = useState<number>(0);
+  const [length, setLength] = useState<number>(0);
 
-  const providerValue = { counter, setCounter };
+  const providerValue = { counter, setCounter, length, setLength };
 
   return (
     <AppContext.Provider value={providerValue}>

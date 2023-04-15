@@ -11,4 +11,6 @@ export interface CopyInterface {
 export interface AppContextInterface {
   counter: number;
   setCounter: React.Dispatch<React.SetStateAction<number>>;
+  length: number;
+  setLength: React.Dispatch<React.SetStateAction<number>>;
 }
