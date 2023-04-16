@@ -9,8 +9,17 @@ export interface CopyInterface {
   click?: () => void;
 }
 export interface AppContextInterface {
-  counter: number;
-  setCounter: React.Dispatch<React.SetStateAction<number>>;
   length: number;
   setLength: React.Dispatch<React.SetStateAction<number>>;
+  uppercase: boolean;
+  setUppercase: React.Dispatch<React.SetStateAction<boolean>>;
+  lowercase: boolean;
+  setLowercase: React.Dispatch<React.SetStateAction<boolean>>;
+  numbers: boolean;
+  setNumbers: React.Dispatch<React.SetStateAction<boolean>>;
+  symbols: boolean;
+  setSymbols: React.Dispatch<React.SetStateAction<boolean>>;
+  inputPassword: string;
+  setInputPassword: React.Dispatch<React.SetStateAction<string>>;
+  generatePassword: (count: number) => void;
 }
