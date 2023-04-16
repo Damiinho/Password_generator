@@ -1,20 +1,24 @@
 import { AppContext } from "../contexts/AppContext";
 import { CopyInterface } from "../interfaces/interface";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 const Copy = (props: CopyInterface) => {
-  const { generatePassword, length } = useContext(AppContext);
+  const { inputPassword } = useContext(AppContext);
+  const [buttonText, setButtonText] = useState("Copy password");
 
   const handleCopyClick = () => {
-    generatePassword(length);
-    console.log("działa");
+    navigator.clipboard.writeText(inputPassword);
+    setButtonText("Copied!");
+    setTimeout(() => {
+      setButtonText("Copy password");
+    }, 1000);
   };
 
   return (
     <div className="password-generator__copy-password">
       <button onClick={handleCopyClick} className="">
         <img src={props.img} className="copy" alt="copy"></img>
-        <p>Copy password</p>
+        <p>{buttonText}</p>
       </button>
     </div>
   );

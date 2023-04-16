@@ -2,14 +2,11 @@ import { useContext } from "react";
 import { AppContext } from "../contexts/AppContext";
 
 const CharacterLength = () => {
-  const { length, setLength, generatePassword } = useContext(AppContext);
+  const { length, setLength } = useContext(AppContext);
 
   const changeLengthValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newLength = parseInt(e.target.value);
     setLength(newLength);
-    if (newLength > 0) {
-      generatePassword(newLength);
-    }
   };
 
   return (
@@ -27,6 +24,7 @@ const CharacterLength = () => {
           name="length"
           min="4"
           max="16"
+          defaultValue="6"
           onChange={changeLengthValue}
         />
       </div>

@@ -1,38 +1,62 @@
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useEffect, useState } from "react";
 import { AppContextInterface } from "../interfaces/interface";
 
 export const AppContext = createContext<AppContextInterface>({
-  length: 16,
+  length: 6,
   setLength: () => {},
-  uppercase: false,
+  uppercase: true,
   setUppercase: () => {},
   lowercase: false,
   setLowercase: () => {},
-  numbers: false,
+  numbers: true,
   setNumbers: () => {},
-  symbols: false,
+  symbols: true,
   setSymbols: () => {},
-  inputPassword: "",
+  inputPassword: "select option",
   setInputPassword: () => {},
-  generatePassword: (count: number) => console.log(count),
+  generatePassword: (
+    length: number,
+    uppercase: boolean,
+    lowercase: boolean,
+    numbers: boolean,
+    symbols: boolean
+  ) => console.log(length),
 });
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-  const [length, setLength] = useState<number>(16);
-  const [uppercase, setUppercase] = useState<boolean>(false);
+  const [length, setLength] = useState<number>(6);
+  const [uppercase, setUppercase] = useState<boolean>(true);
   const [lowercase, setLowercase] = useState<boolean>(false);
-  const [numbers, setNumbers] = useState<boolean>(false);
-  const [symbols, setSymbols] = useState<boolean>(false);
-  const [inputPassword, setInputPassword] = useState<string>("");
-  const generatePassword = (count: number) => {
-    const passwordLength = count !== undefined ? count : length;
-    const chars = "abcdefghijklmnopqrstuvwxyz";
-    let result: string = "";
-    for (let i = 0; i < passwordLength; i++) {
-      result += chars.charAt(Math.floor(Math.random() * chars.length));
+  const [numbers, setNumbers] = useState<boolean>(true);
+  const [symbols, setSymbols] = useState<boolean>(true);
+  const [inputPassword, setInputPassword] = useState<string>("select option");
+  const generatePassword = (
+    length: number,
+    uppercase: boolean,
+    lowercase: boolean,
+    numbers: boolean,
+    symbols: boolean
+  ) => {
+    let chars = "";
+    if (uppercase) chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    if (lowercase) chars += "abcdefghijklmnopqrstuvwxyz";
+    if (numbers) chars += "0123456789";
+    if (symbols) chars += "!@#$%^&*()_+";
+
+    let result = "";
+    if (chars) {
+      for (let i = 0; i < length; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+    } else {
+      result = "select option";
     }
     setInputPassword(result);
   };
+
+  useEffect(() => {
+    generatePassword(length, uppercase, lowercase, numbers, symbols);
+  }, [length, uppercase, lowercase, numbers, symbols]);
 
   const providerValue = {
     length,

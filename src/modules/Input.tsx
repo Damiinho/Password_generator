@@ -3,11 +3,12 @@ import { InputInterface } from "../interfaces/interface";
 import { AppContext } from "../contexts/AppContext";
 
 const Input = (props: InputInterface) => {
-  const { inputPassword, length } = useContext(AppContext);
+  const { inputPassword, length, uppercase, lowercase, numbers, symbols } =
+    useContext(AppContext);
   const { generatePassword } = useContext(AppContext);
 
   const handleOnClick = () => {
-    generatePassword(length);
+    generatePassword(length, uppercase, lowercase, numbers, symbols);
   };
 
   return (
