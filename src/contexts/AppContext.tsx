@@ -64,24 +64,31 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     symbols: boolean
   ) => {
     if (length < 7) {
+      setStrength(1);
+    } else if (length < 10) {
       if (!(!uppercase || !lowercase || !numbers || !symbols)) {
         setStrength(2);
       } else setStrength(1);
-    } else if (length < 10) {
+    } else if (length < 13) {
       if (uppercase && lowercase && numbers && symbols) {
         setStrength(3);
       } else setStrength(2);
-    } else if (length < 12) {
+    } else if (length < 15) {
       if (uppercase && lowercase && numbers && symbols) {
         setStrength(4);
       } else if (uppercase || lowercase || numbers || symbols) {
         setStrength(3);
       } else setStrength(2);
-    } else if (length < 15) {
-      if (uppercase || lowercase || numbers || symbols) {
+    } else {
+      if (
+        (uppercase && lowercase && numbers) ||
+        (uppercase && lowercase && symbols) ||
+        (uppercase && numbers && symbols) ||
+        (lowercase && numbers && symbols)
+      ) {
         setStrength(4);
       } else setStrength(3);
-    } else setStrength(4);
+    }
   };
 
   useEffect(() => {
