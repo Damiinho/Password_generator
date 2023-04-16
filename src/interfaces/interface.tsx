@@ -21,6 +21,8 @@ export interface AppContextInterface {
   setSymbols: React.Dispatch<React.SetStateAction<boolean>>;
   inputPassword: string;
   setInputPassword: React.Dispatch<React.SetStateAction<string>>;
+  strength: number;
+  setStrength: React.Dispatch<React.SetStateAction<number>>;
   generatePassword: (
     length: number,
     uppercase: boolean,

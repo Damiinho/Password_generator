@@ -46,7 +46,7 @@ div.password-generator {
     // background-color: red;
     &__title {
       position: absolute;
-      width: 125px;
+      width: 140px;
       height: 22px;
       left: 0px;
       top: 9px;
@@ -130,7 +130,7 @@ div.password-generator {
     }
   }
 
-  &__strenght {
+  &__strength {
     position: absolute;
     width: 410px;
     height: 78px;
@@ -157,10 +157,11 @@ div.password-generator {
       color: #000000;
     }
     &__description {
+      text-align: right;
       position: absolute;
-      width: 150px;
+      width: 177px;
       height: 19px;
-      left: 236px;
+      right: 24px;
       top: 20px;
 
       font-family: "Manrope";
@@ -191,8 +192,14 @@ div.password-generator {
         background: #e2e2e2;
         border-radius: 90px;
       }
-      &-level.active {
+      &-level.red {
         background: #ff3a3a;
+      }
+      &-level.yellow {
+        background: #ffc225;
+      }
+      &-level.green {
+        background: #30bf19;
       }
     }
   }

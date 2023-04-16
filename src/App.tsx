@@ -4,7 +4,7 @@ import "./App.scss";
 import Title from "./modules/Title";
 import CharacterLength from "./modules/CharacterLength";
 import Includes from "./modules/Includes";
-import Strenght from "./modules/Strenght";
+import Strength from "./modules/Strength";
 import Input from "./modules/Input";
 import Copy from "./modules/Copy";
 import AppProvider from "./contexts/AppContext";
@@ -16,7 +16,7 @@ function App() {
         <Title name="Password generator" />
         <CharacterLength />
         <Includes />
-        <Strenght />
+        <Strength />
         <Input img={RefreshPNG} />
         <Copy img={CopyPNG} />
       </div>

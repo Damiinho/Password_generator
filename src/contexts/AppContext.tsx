@@ -14,6 +14,8 @@ export const AppContext = createContext<AppContextInterface>({
   setSymbols: () => {},
   inputPassword: "select option",
   setInputPassword: () => {},
+  strength: 0,
+  setStrength: () => {},
   generatePassword: (
     length: number,
     uppercase: boolean,
@@ -29,7 +31,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [lowercase, setLowercase] = useState<boolean>(false);
   const [numbers, setNumbers] = useState<boolean>(true);
   const [symbols, setSymbols] = useState<boolean>(true);
-  const [inputPassword, setInputPassword] = useState<string>("select option");
+  const [inputPassword, setInputPassword] = useState<string>("");
+  const [strength, setStrength] = useState<number>(0);
   const generatePassword = (
     length: number,
     uppercase: boolean,
@@ -53,9 +56,37 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     }
     setInputPassword(result);
   };
+  const generateStrength = (
+    length: number,
+    uppercase: boolean,
+    lowercase: boolean,
+    numbers: boolean,
+    symbols: boolean
+  ) => {
+    if (length < 7) {
+      if (!(!uppercase || !lowercase || !numbers || !symbols)) {
+        setStrength(2);
+      } else setStrength(1);
+    } else if (length < 10) {
+      if (uppercase && lowercase && numbers && symbols) {
+        setStrength(3);
+      } else setStrength(2);
+    } else if (length < 12) {
+      if (uppercase && lowercase && numbers && symbols) {
+        setStrength(4);
+      } else if (uppercase || lowercase || numbers || symbols) {
+        setStrength(3);
+      } else setStrength(2);
+    } else if (length < 15) {
+      if (uppercase || lowercase || numbers || symbols) {
+        setStrength(4);
+      } else setStrength(3);
+    } else setStrength(4);
+  };
 
   useEffect(() => {
     generatePassword(length, uppercase, lowercase, numbers, symbols);
+    generateStrength(length, uppercase, lowercase, numbers, symbols);
   }, [length, uppercase, lowercase, numbers, symbols]);
 
   const providerValue = {
@@ -71,6 +102,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     setSymbols,
     inputPassword,
     setInputPassword,
+    strength,
+    setStrength,
     generatePassword,
   };
 

@@ -11,7 +11,7 @@ const Copy = (props: CopyInterface) => {
     setButtonText("Copied!");
     setTimeout(() => {
       setButtonText("Copy password");
-    }, 1000);
+    }, 500);
   };
 
   return (
