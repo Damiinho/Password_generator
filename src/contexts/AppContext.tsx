@@ -1,6 +1,8 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { AppContextInterface } from "../interfaces/interface";
 
+const DEFAULT_PASSWORD = "select option";
+
 export const AppContext = createContext<AppContextInterface>({
   length: 6,
   setLength: () => {},
@@ -12,7 +14,7 @@ export const AppContext = createContext<AppContextInterface>({
   setNumbers: () => {},
   symbols: true,
   setSymbols: () => {},
-  inputPassword: "select option",
+  inputPassword: DEFAULT_PASSWORD,
   setInputPassword: () => {},
   strength: 0,
   setStrength: () => {},
@@ -31,7 +33,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [lowercase, setLowercase] = useState<boolean>(false);
   const [numbers, setNumbers] = useState<boolean>(true);
   const [symbols, setSymbols] = useState<boolean>(true);
-  const [inputPassword, setInputPassword] = useState<string>("");
+  const [inputPassword, setInputPassword] = useState<string>(DEFAULT_PASSWORD);
   const [strength, setStrength] = useState<number>(0);
   const generatePassword = (
     length: number,
@@ -52,7 +54,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         result += chars.charAt(Math.floor(Math.random() * chars.length));
       }
     } else {
-      result = "select option";
+      result = DEFAULT_PASSWORD;
     }
     setInputPassword(result);
   };
