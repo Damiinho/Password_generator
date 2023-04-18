@@ -12,7 +12,7 @@ const CharacterLength = () => {
   return (
     <div className="password-generator__character-length-box">
       <div className="password-generator__character-length-box__title">
-        Character Length
+        Character length
       </div>
       <div className="password-generator__character-length-box__number">
         {length}

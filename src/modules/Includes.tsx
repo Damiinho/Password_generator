@@ -42,7 +42,7 @@ const Includes = () => {
           checked={uppercase}
           onChange={handleCheckboxChange}
         />
-        <p>Include Uppercase Letter</p>
+        <p>Include uppercase letter</p>
       </label>
       <label>
         <input
@@ -51,7 +51,7 @@ const Includes = () => {
           checked={lowercase}
           onChange={handleCheckboxChange}
         />
-        <p>Include Lowercase Letter</p>
+        <p>Include lowercase letter</p>
       </label>
       <label>
         <input
@@ -60,7 +60,7 @@ const Includes = () => {
           checked={numbers}
           onChange={handleCheckboxChange}
         />
-        <p>Include Numbers</p>
+        <p>Include numbers</p>
       </label>
       <label>
         <input
@@ -69,7 +69,7 @@ const Includes = () => {
           checked={symbols}
           onChange={handleCheckboxChange}
         />
-        <p>Include Symbols</p>
+        <p>Include symbols</p>
       </label>
     </div>
   );
