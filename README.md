@@ -1,6 +1,7 @@
 # Password generator
 
 You can see this application [on this page](https://damiinho.github.io/Password_generator/) (via GitHub Pages).
+The website should display well on any device.
 
 ## App description
 
